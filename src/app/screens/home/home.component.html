@@ -1,4 +1,13 @@
 <div>
-    <app-nav-bar></app-nav-bar>
-    <p>home works!</p>
+  <app-nav-bar></app-nav-bar>
+  <p>home works!</p>
+  <app-modal *ngIf="openModal" [isActive]="openModal">
+      <div class="modal-body">
+        <div class="input_container">
+          <input class="input_user" type="text" id="textUser" placeholder=" " />
+          <label for="textUser" class="input_label">Ingrese Usuario</label>
+        </div>
+        <button mat-raised-button class="form_button" (click)="submitForm(userForm)">JUGAR!</button>
+      </div>
+  </app-modal>
 </div>

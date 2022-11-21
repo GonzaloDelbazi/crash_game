@@ -1,0 +1,16 @@
+.modal {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(163, 163, 163, 0.582);
+}
+
+
+span {
+    color: white;
+}

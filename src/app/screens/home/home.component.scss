@@ -1,0 +1,53 @@
+.input_user {
+  padding: 0.7rem;
+  border: 0;
+  border-radius: 0.5rem;
+  display: block;
+  outline: 2px solid rgb(107, 107, 107);
+  background-color: rgb(43, 43, 43);
+}
+
+.input_label {
+  position: absolute;
+  top: 7px;
+  left: 12px;
+  padding: 0px 7px;
+  color: rgb(107, 107, 107);
+  background-color: rgb(43, 43, 43);
+}
+
+.input_user:focus {
+  outline: 2px solid rgb(9, 197, 6);
+}
+
+.input_user:focus + .input_label {
+  transform: translate(-1rem, -1rem) scale(0.9);
+  transition: all 0.5s;
+  color: rgb(9, 197, 6);
+}
+
+.input_user:not(:placeholder-shown) + .input_label {
+  transform: translate(-1rem, -1rem) scale(0.9);
+  transition: all 0.5s;
+}
+
+.form_button {
+    margin-top: 20px;
+    background-color: rgb(9, 197, 6);
+    color: white;
+}
+
+.modal-body {
+  height: 200px;
+  width: 300px;
+  background-color: rgb(43, 43, 43);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+}
+
+.input_container {
+  position: relative;
+}

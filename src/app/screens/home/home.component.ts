@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavBar } from 'src/app/components/nav-bar/nav-bar.component';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +7,17 @@ import { NavBar } from 'src/app/components/nav-bar/nav-bar.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  openModal:boolean = true;
+  userForm: FormGroup;
 
   constructor() { }
 
   ngOnInit(): void {
+    let user = localStorage.getItem('usuario');
+    if(user) {
+      this.openModal = false;
+      console.log(user);
+    }
   }
 
 }
