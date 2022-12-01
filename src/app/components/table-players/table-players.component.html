@@ -1,0 +1,10 @@
+<div class="table_container">
+    <table class="table" mat-table [dataSource]="playersArray">
+        <ng-container *ngFor="let column of columnsPlayers" [matColumnDef]="column.columnName">
+            <th mat-header-cell *matHeaderCellDef> {{column.columnName | uppercase}} </th>
+            <td mat-cell [ngClass]="customStyle ? betsStylesResults(element) : ''" *matCellDef="let element"> {{column.element(element)}} </td>
+        </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

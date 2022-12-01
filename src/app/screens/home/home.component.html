@@ -1,13 +1,175 @@
-<div>
-  <app-nav-bar></app-nav-bar>
-  <p>home works!</p>
-  <app-modal *ngIf="openModal" [isActive]="openModal">
-      <div class="modal-body">
-        <div class="input_container">
-          <input class="input_user" type="text" id="textUser" placeholder=" " />
-          <label for="textUser" class="input_label">Ingrese Usuario</label>
+<div class="main_box">
+  <div class="game_box">
+    <div class="first_row">
+      <div class="bet_container">
+        <div class="bet_options_container">
+          <div style="margin-bottom: 1rem">
+            <span class="description_span">Monto de Apuesta</span>
+            <div class="select_balance">
+              <mat-icon class="icon_input">attach_money</mat-icon>
+              <input
+                class="input_bet"
+                type="number"
+                [(ngModel)]="currentBet.balance"
+                name="balanceBet"
+              />
+              <button
+                class="button_tool"
+                (click)="currentBet.balance = currentBet.balance * 2"
+                mat-raised-button
+              >
+                x2
+              </button>
+              <button
+                class="button_tool"
+                (click)="currentBet.balance = currentBet.balance / 2"
+                mat-raised-button
+              >
+                /2
+              </button>
+              <button
+                class="button_tool"
+                (click)="currentBet.balance = 100"
+                mat-raised-button
+              >
+                Min
+              </button>
+              <button
+                class="button_tool"
+                (click)="currentBet.balance = currentUser.balance"
+                mat-raised-button
+              >
+                Max
+              </button>
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem">
+            <span class="description_span">Retiro automatico</span>
+            <div class="select_balance">
+              <input
+                class="input_perm"
+                type="number"
+                step=".01"
+                placeholder="0.01"
+                [(ngModel)]="currentBet.bet"
+              />
+            </div>
+          </div>
+          <div class="select_balance" style="height: 5vh !important">
+            <button
+              [(disabled)]="!isOpenBet"
+              class="bet_button"
+              mat-raised-button
+              (click)="startBet()"
+            >
+              Realizar Apuesta
+            </button>
+          </div>
         </div>
-        <button mat-raised-button class="form_button" (click)="submitForm(userForm)">JUGAR!</button>
       </div>
+      <div class="crash">
+        <div class="history_box">
+          <span
+            class="history_values"
+            *ngFor="let value of crashHistory; index as i"
+            style="margin-left: .2rem ;"
+            >{{ value | number: "1.2" }}</span
+          >
+        </div>
+        <div *ngIf="!isOpenBet; else progressBar">
+          <span *ngIf="isCrash" class="span_crashed">Crashed</span>
+          <span [ngClass]="isCrash ? 'crash_value_red' : 'crash_value'">{{
+            valueCrash | number: "1.2"
+          }}</span>
+        </div>
+        <ng-template #progressBar>
+          <span style="color: white">Siguiente ronda en :</span>
+          <div class="progress_box">
+            <mat-progress-bar
+              mode="determinate"
+              [(value)]="progressBarValue"
+            ></mat-progress-bar>
+            <span class="span_progress">{{ timeToBet | number: "1.2" }}</span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="second_row">
+      <mat-tab-group class="mat-tab">
+        <mat-tab label="Mayores Ganadores">
+          <table-players
+      class="table-tab"
+      [playersArray]="gamesHistory"
+      [columnsPlayers]="rowWinners"
+      [displayedColumns]="winnersColumns"
+    >
+    </table-players>
+        </mat-tab>
+        <mat-tab label="Tus apuestas">
+          <table-players
+      class="table-tab"
+      [playersArray]="personalHistory"
+      [columnsPlayers]="personalHistoryRows"
+      [displayedColumns]="personalColumns"
+      [crashValue]="valueCrash"
+      [isCrash]="isCrash"
+    >
+    </table-players>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <!-- New Component table -->
+  </div>
+  <div class="players_container">
+    <table-players
+      class="table"
+      [playersArray]="betList"
+      [crashValue]="valueCrash"
+      [isCrash]="isCrash"
+      [customStyle]="true"
+      [columnsPlayers]="columnsPlayers"
+      [displayedColumns]="displayedColumns"
+    >
+    </table-players>
+  </div>
+  <app-modal *ngIf="openModal" [isActive]="openModal">
+    <!-- USAR FORMULARIO -->
+    <div class="modal-body">
+      <form (ngSubmit)="saveData(formTemplate)" #formTemplate="ngForm">
+        <div>
+          <div class="input_container">
+            <input
+              class="input_user"
+              ngModel
+              required
+              type="text"
+              name="username"
+              id="textUser"
+              placeholder=" "
+            />
+            <label for="textUser" class="input_label">Ingrese Usuario</label>
+          </div>
+          <div class="balance_container">
+            <span class="balance_span">Seleccione su balance inicial</span>
+            <mat-slider
+              thumbLabel
+              min="50"
+              max="100000"
+              step="1000"
+              ngModel
+              name="balance"
+              showTickMarks
+              [displayWith]="formatSlider"
+              [(value)]="balanceUser"
+            >
+              <input matSliderThumb />
+            </mat-slider>
+          </div>
+        </div>
+        <button mat-raised-button class="form_button" type="submit">
+          JUGAR!
+        </button>
+      </form>
+    </div>
   </app-modal>
 </div>

@@ -1,7 +1,10 @@
+@import '../../../styles/variables.scss';
+
 .modal {
     top: 0;
     left: 0;
     position: fixed;
+    z-index: 1;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -10,6 +13,17 @@
     background-color: rgba(163, 163, 163, 0.582);
 }
 
+::ng-deep .mat-slider-thumb, .mat-accent.mat-slider-thumb-label {
+    background-color: $espColor !important;
+}
+
+::ng-deep .mat-accent .mat-slider-track-fill, .mat-accent .mat-slider-thumb, .mat-accent .mat-slider-thumb-label {
+    background-color: $espColor !important;
+}
+
+::ng-deep .mat-slider-thumb-label {
+    background-color: $secondaryColor !important;
+}
 
 span {
     color: white;

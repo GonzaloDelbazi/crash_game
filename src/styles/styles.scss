@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+
+*, *{
+    box-sizing: content-box;
+}
+
+
+html, body { 
+    height: 100%;
+    box-sizing: inherit;
+}
+body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: $body-color; 
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: $ternary2Color;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: $ternaryColor;
+    border-radius: 14px;
+    border: 0px;
+  }

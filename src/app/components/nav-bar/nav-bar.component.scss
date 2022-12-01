@@ -1,29 +1,52 @@
+@import '../../../styles/variables.scss';
+
 a {
-    background-color: rgb(9, 197, 6);
-    border-radius: 2rem;
-    padding: 0.5rem;
-    cursor: pointer;
+  background-color: $primaryColor;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.title_bar {
+  position: absolute;
+  left: 20px;
 }
 
 .bar-container {
-    width: 100%;
-    height: 9vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(35, 35, 35);
+  width: 100%;
+  height: 10%;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  background-color: $ternary2Color;
 }
 
-span {
-    color: rgb(9, 197, 6);
-    cursor: pointer;
+.danger_btn {
+  color: red;
+  font-size: 1rem;
 }
 
-span:hover {
-    color: rgb(7, 165, 5);
+.bar_btn {
+  color: $primaryColor;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
-.spans-container{
-    left: 0;
+.bar_btn_user {
+    @extend .bar_btn;
+    margin-right: 5px;
+}
+
+.bar_btn:hover {
+  color: $secondaryColor
+}
+
+.spans-container {
+  position: absolute;
+  right:  80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

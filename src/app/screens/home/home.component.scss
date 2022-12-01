@@ -1,11 +1,164 @@
-.input_user {
-  padding: 0.7rem;
-  border: 0;
-  border-radius: 0.5rem;
-  display: block;
-  outline: 2px solid rgb(107, 107, 107);
-  background-color: rgb(43, 43, 43);
+@import '../../../styles/variables.scss';
+
+.alignment_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.main_box {
+  @extend .alignment_center;
+  align-items: flex-start;
+  width: 100%;
+  height: 90%;
+}
+
+.game_box {
+  margin-top: 3rem;
+  border-radius: .75rem;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 90%;
+}
+
+.first_row {
+  height: 50%;
+  width: 100%;
+  border-radius: .7rem;
+  box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.85);
+  display: flex;
+
+}
+
+.players_container {
+  margin: 3rem 0rem 0rem 1rem;
+  display: flex;
+  border-radius: .75rem;
+  width: 30%;
+  height: 80%;
+  box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.85);
+}
+
+.bet_container {
+  @extend .alignment_center;
+  align-items: flex-start !important;
+  border-radius: .75rem 0rem 0rem .75rem;
+  width: 40%;
+  height: 100%;
+  background-color: $primaryColor;
+}
+
+
+
+.span_crashed {
+  color: white; 
+  font-size: 10px;
+  position: absolute;
+  top: 25%;
+  left: 35%;
+}
+
+.crash {
+  @extend .alignment_center;
+  border-radius: 0rem .75rem .75rem 0rem;
+  width: 60%;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+  background-color: $ternary2Color;
+}
+
+.select_balance {
+  @extend .alignment_center;
+  position: relative;
+  height: 4vh;
+}
+
+.icon_input {
+  position: absolute;
+  left: 1rem;
+  top: .5rem;
+  font-size: 1.3rem
+
+}
+
+.input_bet {
+  @extend .input;
+  padding: 0px 0px 0px 25px !important;
+  border-radius: 0.3rem 0rem 0rem 0.3rem !important;
+  width: 35%;
+  height: 100%;
+  color: $secondaryColor;
+  background-color:  rgb(249, 249, 249);
+}
+
+.input_bet:focus {
+  transition: .8s;
+  outline: 1.5px solid $espColor;
+}
+
+.input_perm {
+  @extend .input;
+  padding: 0px 5px 0px 5px !important;
+  width: 90%;
+  height: 100%;
+  color: $secondaryColor;
+  background-color:  rgb(249, 249, 249);
+}
+
+.bet_button {
+  padding: .3rem;
+  color: rgb(249, 249, 249);
+  background-color: $espColor;
+  width: 95%;
+  height: 100%;
+}
+
+.button_tool {
+  color: rgb(225, 225, 225);
+  background-color: $espColor;
+  border-radius: 0px;
+  min-width: 2.2rem;
+  height: 100%;
+  padding: 0px;
+}
+
+.crash_value {
+  font-size: 5rem;
+  color: rgb(9, 197, 6);
+}
+
+.table {
+  width: 100%;
+  height: 100%;
+  border-radius: .7rem;
+}
+
+.crash_value_red {
+  @extend .crash_value;
+  color: red;
+}
+
+.input_user {
+  @extend .input;
+  display: block;
+  outline: 1px solid $secondaryColor !important;
+  background-color: rgb(43, 43, 43);
+  color: $white;
+  cursor: pointer;
+}
+
+.input {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 15px;
+  font-weight: bolder;
+  letter-spacing: .75px;
+  outline: none;
+}
+
 
 .input_label {
   position: absolute;
@@ -17,13 +170,14 @@
 }
 
 .input_user:focus {
-  outline: 2px solid rgb(9, 197, 6);
+  border: 1.8px solid $primaryColor;
+  background-color: rgb(43, 43, 43);
 }
 
 .input_user:focus + .input_label {
   transform: translate(-1rem, -1rem) scale(0.9);
   transition: all 0.5s;
-  color: rgb(9, 197, 6);
+  color: $primaryColor;
 }
 
 .input_user:not(:placeholder-shown) + .input_label {
@@ -32,22 +186,168 @@
 }
 
 .form_button {
-    margin-top: 20px;
-    background-color: rgb(9, 197, 6);
+    margin-top: 7px;
+    background-color: $primaryColor;
+    width: 100%;
     color: white;
 }
 
-.modal-body {
-  height: 200px;
-  width: 300px;
-  background-color: rgb(43, 43, 43);
+.form_button:hover {
+    background-color: $secondaryColor;
+    color: white;
+}
+
+.description_span {
+  color: $ternaryColor;
+  font-size: 1rem;
+  margin-left: .5rem;
+}
+
+.balance_span{
+  color: $primaryColor;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.bet_options_container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+}
+
+.balance_container {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-accent .mat-slider-focus-ring {
+  background-color: $primaryColor;
+} 
+
+::ng-deep mat-slider-thumb {
+ background-color: $primaryColor;
+}
+
+.modal-body {
+  @extend .alignment_center;
+  height: 200px;
+  width: 300px;
+  padding: 1rem;
+  background-color: rgb(43, 43, 43);
+  flex-direction: column;
   border-radius: 1.5rem;
 }
 
 .input_container {
   position: relative;
 }
+
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: $primaryColor;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+  border-radius: 2px;
+}
+
+.progress_box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.span_progress {
+  position: absolute;
+  color: black;
+
+}
+
+.history_box {
+  position: absolute;
+  top: 1.3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.history_values {
+  background-color: $espColor;
+  padding: .5rem;
+  border-radius: 1.8rem;
+}
+
+.mat-progress-bar {
+  width: 20vw;
+  height: 1.7rem;
+  border-radius: 10px;
+}
+
+.second_row {
+  margin: 2rem 0rem 0rem 0rem;
+  display: flex;
+  position: relative;
+  height: 35%;
+  width: 100%;
+  border-radius: .7rem;
+  box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.85);
+}
+
+table-players.table > div.table_container > table.mat-table.cdk-table.table > thead {
+  background-color: $secondaryColor !important;
+}
+
+
+::ng-deep table-players.table-tab > div > table {
+  border-radius: 0rem 0rem .7rem .7rem !important;
+  
+}
+
+::ng-deep .mat-tab-body-wrapper, mat-tab-body {
+  width: 100%;
+  height: 100%;
+}
+
+mat-tab {
+  border-radius: .7rem;
+}
+
+mat-tab-group {
+  width: 100%;
+  border-radius: .7rem;
+}
+
+::ng-deep mat-ripple {
+  border-radius: .7rem;
+  
+}
+
+::ng-deep div.mat-tab-label-content {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: $espColor;
+  height: .2rem;
+}
+
+::ng-deep mat-tab-group > mat-tab-header {
+  background-color: $primaryColor !important;
+  border-radius: 0.7rem 0.7rem 0rem 0rem;
+  height: 5vh;
+  width: 100%;
+}
+
+::ng-deep .mat-ripple {
+  width: 50%;
+  color: black;
+} 
